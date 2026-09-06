@@ -1,2 +1,0 @@
-class Retriver:
-    pass
