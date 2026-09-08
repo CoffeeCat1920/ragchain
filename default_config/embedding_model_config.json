@@ -1,6 +1,6 @@
 {
-  "embedding_models": {
-    "text_embedding_model": {
+  "embedding_models_list": {
+    "text_embedding_models_list": {
       "huggingface_embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
       "ollama_embedding_model": "locusai/all-minilm-l6-v2"
     }

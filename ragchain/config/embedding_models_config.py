@@ -8,11 +8,14 @@ class TextEmbeddingModelsList:
 
 @dataclass
 class EmbeddingModelsList:
-    text_embedding_models: TextEmbeddingModelsList
+    text_embedding_models_list: TextEmbeddingModelsList
 
-def LoadEmbeddingModelsList(path : str):
+def LoadEmbeddingModelsListFromPath(path : str):
     with open(path) as f:
        data = json.load(f)
-       text_embedding_models_list = TextEmbeddingModelsList(**data["text_embedding_models"]) 
-       embedding_models_list = EmbeddingModelsList(text_embedding_models=text_embedding_models_list)
+       text_embedding_models_list = TextEmbeddingModelsList(**data["embedding_models_list"]["text_embedding_models_list"]) 
+       embedding_models_list = EmbeddingModelsList(text_embedding_models_list=text_embedding_models_list)
     return embedding_models_list
+
+def LoadEmbeddingModelsList():
+    pass
