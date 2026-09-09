@@ -4,5 +4,6 @@
       "huggingface_embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
       "ollama_embedding_model": "locusai/all-minilm-l6-v2"
     }
-  }
+  },
+  "current_text_embedding_model": "huggingface_embedding_model"
 }
