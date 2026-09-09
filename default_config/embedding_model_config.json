@@ -5,5 +5,5 @@
       "ollama_embedding_model": "locusai/all-minilm-l6-v2"
     }
   },
-  "current_text_embedding_model": "huggingface_embedding_model"
+  "current_text_embedding_model": "HUGGINGFACE_EMBEDDING_MODEL"
 }
