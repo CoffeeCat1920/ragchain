@@ -1,8 +1,10 @@
-from .embedding_models import embedding_model_base
+from .embedding_models import text_embedding_model_base 
 
 def main():
-    embedding_model = embedding_model_base.EmbeddingModalBase()
-    embedding_model.PrintCurrentModel()
+    hf_text_em_base = text_embedding_model_base.HFTextEMBase("sentence-transformers/all-MiniLM-L6-v2")
+    hf_text_em_base.GetEmbeddingModel()
+    hf_text_em_base.PrintModelName()
+
 
 if __name__ == "__main__":
     main()

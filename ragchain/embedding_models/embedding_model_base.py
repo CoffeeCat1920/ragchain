@@ -1,8 +1,14 @@
 from ragchain.config import embedding_models_config
+from abc import ABC, abstractmethod 
 
-class EmbeddingModalBase:
+class EMBase(ABC):
     def __init__(self):
         self.config = embedding_models_config.LoadEmbeddingModelConfig()
-    def PrintCurrentModel(self):
-        print(self.config.current_text_embedding_model)
-        print(self.config.text_embedding_models_list.get(self.config.current_text_embedding_model))
+
+    @abstractmethod
+    def PrintModelName(self):
+        pass
+    
+    @abstractmethod
+    def GetEmbeddingModel(self):
+        pass
