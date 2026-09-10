@@ -1,8 +1,8 @@
-from .embedding_models import embedding_models_registry as emr 
+from .injustor import injustor
 
 def main():
-    em_registry = emr.EmbeddingRegistry() 
-    em_registry.print_current_text_model()
+    _injustor = injustor.Injustor()
+    print(_injustor._check_type("assets/green_lantern_lore.txt"))
 
 
 if __name__ == "__main__":
