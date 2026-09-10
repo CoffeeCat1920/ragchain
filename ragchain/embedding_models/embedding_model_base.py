@@ -1,3 +1,5 @@
+from langchain_core.embeddings import Embeddings
+
 from ragchain.config import embedding_models_config
 from abc import ABC, abstractmethod 
 
@@ -10,5 +12,5 @@ class EMBase(ABC):
         pass
     
     @abstractmethod
-    def GetEmbeddingModel(self):
+    def GetEmbeddingModel(self) -> Embeddings:
         pass
