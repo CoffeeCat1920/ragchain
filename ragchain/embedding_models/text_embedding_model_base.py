@@ -8,10 +8,10 @@ class HFTextEMBase(embedding_model_base.EMBase):
         self.embedding_model = HuggingFaceEmbeddings(
                 model_name=model_name)
 
-    def PrintModelName(self):
+    def print_model_name(self):
         print(self.embedding_model.model_name)
 
-    def GetEmbeddingModel(self):
+    def get_embedding_model(self):
         return self.embedding_model 
 
 class OLTextEMBase(embedding_model_base.EMBase):
@@ -19,8 +19,8 @@ class OLTextEMBase(embedding_model_base.EMBase):
         super().__init__()
         self.embedding_model = OllamaEmbeddings(model=model_name) 
 
-    def PrintModelName(self):
+    def print_model_name(self):
         print(self.embedding_model.model)
 
-    def GetEmbeddingModel(self):
+    def get_embedding_model(self):
         return self.embedding_model 

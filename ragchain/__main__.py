@@ -1,9 +1,8 @@
-from .embedding_models import text_embedding_model_base 
+from .embedding_models import embedding_models_registry as emr 
 
 def main():
-    hf_text_em_base = text_embedding_model_base.HFTextEMBase("sentence-transformers/all-MiniLM-L6-v2")
-    hf_text_em_base.GetEmbeddingModel()
-    hf_text_em_base.PrintModelName()
+    em_registry = emr.EmbeddingRegistry() 
+    em_registry.print_current_text_model()
 
 
 if __name__ == "__main__":

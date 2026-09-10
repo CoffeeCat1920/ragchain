@@ -8,9 +8,9 @@ class EMBase(ABC):
         self.config = embedding_models_config.LoadEmbeddingModelConfig()
 
     @abstractmethod
-    def PrintModelName(self):
+    def print_model_name(self):
         pass
     
     @abstractmethod
-    def GetEmbeddingModel(self) -> Embeddings:
+    def get_embedding_model(self) -> Embeddings:
         pass
