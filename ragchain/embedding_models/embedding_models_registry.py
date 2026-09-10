@@ -32,7 +32,7 @@ class EmbeddingRegistry:
 
             if model_class is not None:
                 self.text_models[option] = model_class(
-                    model_name=option.name
+                    model_name=self.config.text_embedding_models_list.get(option)
                 )
 
     def _get_text_model(self, option: TextEMOption):
@@ -42,5 +42,4 @@ class EmbeddingRegistry:
         return self._get_text_model(self.config.current_text_embedding_model)
     
     def print_current_text_model(self):
-        print(self.config.current_text_embedding_model)
-        print(self.get_current_text_model())
+        self.get_current_text_model().print_model_name() #type: ignore 

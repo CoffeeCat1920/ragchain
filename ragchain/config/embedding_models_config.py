@@ -10,7 +10,6 @@ class TextEMOption(Enum):
 class TextEmbeddingModelsList:
     text_embedding_models_list: dict = field(default_factory=dict)
     def get(self, text_embedding_model : TextEMOption):
-        print("hi")
         return self.text_embedding_models_list[text_embedding_model.value] 
 
 @dataclass
