@@ -26,7 +26,6 @@ class EmbeddingRegistry:
         self._load_text_models()
 
     def _load_text_models(self) -> None:
-        print(self.config.text_embedding_models_list.text_embedding_models_list.items())
         for option in TextEMOption:
             model_class = _MODEL_TYPES.get(option)
 
