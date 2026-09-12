@@ -13,7 +13,7 @@ class TypeChecker():
     def __init__(self) -> None:
         pass
 
-    def type_check(self, path : str):
+    def check(self, path : str):
         mime, _ = mimetypes.guess_type(path)
 
         if mime is None:

@@ -1,8 +1,11 @@
-from . import type_check
+from .type_check import TypeChecker, FileType 
 
 class Injustor:
     def __init__(self):
-        self.type_checker = type_check.TypeChecker() 
+        self.type_checker = TypeChecker() 
 
-    def _check_type(self, path : str):
-        self.type_checker.type_check(path)
+    def embed(self, path : str):
+        data_type = self.type_checker.check(path) 
+
+        if data_type == FileType.TEXT:
+            pass
