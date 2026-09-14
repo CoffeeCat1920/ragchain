@@ -35,7 +35,7 @@ class EmbeddingRegistry:
                 )
 
     def _get_text_model(self, option: TextEMOption):
-        return self.text_models.get(option)
+        return self.text_models.get(option).get_embedding_model()
 
     def get_current_text_model(self):
         return self._get_text_model(self.config.current_text_embedding_model)
