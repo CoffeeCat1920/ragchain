@@ -17,7 +17,7 @@ class EmbeddingModelsConfig:
     text_embedding_models_list: TextEmbeddingModelsList
     current_text_embedding_model: TextEMOption 
 
-def LoadEmbeddingModelsConfigFromPath(path : str):
+def LoadEmbeddingModelsConfigFromPath(path : str) -> EmbeddingModelsConfig:
     with open(path) as f:
        data = json.load(f)
        text_embedding_models_list = TextEmbeddingModelsList(**data["embedding_models_list"]) 

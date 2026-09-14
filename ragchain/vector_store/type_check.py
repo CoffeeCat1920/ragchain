@@ -13,7 +13,7 @@ class TypeChecker():
     def __init__(self) -> None:
         pass
 
-    def check(self, path : str):
+    def check(self, path : str) -> FileType:
         mime, _ = mimetypes.guess_type(path)
 
         if mime is None:
@@ -24,3 +24,5 @@ class TypeChecker():
 
         if mime.startswith("image/"):
             return FileType.IMG
+
+        return FileType.OTHER

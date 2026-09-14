@@ -1,10 +1,8 @@
 from typing import Dict
-
-from ragchain.config import embedding_models_config
+from langchain_core.embeddings import Embeddings
 from ragchain.config.embedding_models_config import (
     LoadEmbeddingModelConfig,
     TextEMOption,
-    TextEmbeddingModelsList,
 )
 from ragchain.embedding_models.embedding_model_base import EMBase
 
@@ -21,7 +19,7 @@ _MODEL_TYPES = {
 class EmbeddingRegistry:
     def __init__(self) -> None:
         self.config = LoadEmbeddingModelConfig()
-        self.text_models = {}
+        self.text_models : dict[TextEMOption, EMBase] = {}
 
         self._load_text_models()
 
@@ -34,11 +32,14 @@ class EmbeddingRegistry:
                     model_name=self.config.text_embedding_models_list.get(option)
                 )
 
-    def _get_text_model(self, option: TextEMOption):
-        return self.text_models.get(option).get_embedding_model()
+    def _get_text_model(self, option: TextEMOption) -> Embeddings | None:
+        emb_model = self.text_models.get(option)
+        if emb_model == None:
+            return None 
+        return emb_model.get_embedding_model()
 
-    def get_current_text_model(self):
+    def get_current_text_model(self) -> Embeddings | None:
         return self._get_text_model(self.config.current_text_embedding_model)
     
-    def print_current_text_model(self):
+    def print_current_text_model(self) -> None:
         self.get_current_text_model().print_model_name() #type: ignore 

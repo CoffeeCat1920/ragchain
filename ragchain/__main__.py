@@ -1,10 +1,8 @@
-from .injustor import injustor
-from .vector_store.vector_store import VectorStore
+from .vector_store.vector_store import VectorStore 
 
-def main():
-    _injustor = injustor.Injustor()
+def main() -> None:
     _vector_store = VectorStore("chroma_db")
-    print(_injustor.embed("assets/green_lantern_lore.txt", vector_store=_vector_store))
+    print(_vector_store.injust("assets/green_lantern_lore.txt"))
 
 if __name__ == "__main__":
     main()
