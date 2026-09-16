@@ -5,7 +5,7 @@ from langchain_ollama import OllamaEmbeddings
 
 class HFTextEMBase(embedding_model_base.EMBase):
     def __init__(self, model_name : str):
-        super().__init__()
+        super().__init__(model_name)
         self.embedding_model = HuggingFaceEmbeddings(
                 model_name=model_name)
 
@@ -17,7 +17,7 @@ class HFTextEMBase(embedding_model_base.EMBase):
 
 class OLTextEMBase(embedding_model_base.EMBase):
     def __init__(self, model_name : str):
-        super().__init__()
+        super().__init__(model_name)
         self.embedding_model = OllamaEmbeddings(model=model_name) 
 
     def print_model_name(self):

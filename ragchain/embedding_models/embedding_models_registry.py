@@ -1,4 +1,3 @@
-from typing import Dict
 from langchain_core.embeddings import Embeddings
 from ragchain.config.embedding_models_config import (
     LoadEmbeddingModelConfig,

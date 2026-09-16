@@ -12,6 +12,11 @@ class LLMConfig(BaseModel):
     text_llm_config : TextLLMConfig 
     current_text_llm: TextLLMOption
 
+    def get_current_model(self) -> str:
+        return self.text_llm_config.text_llm_list[self.current_text_llm]
+
+    def get(self, option : TextLLMOption):
+        return self.text_llm_config.text_llm_list[option]
 
 def LoadLLMConfig(path : str) -> LLMConfig:
     with open(path) as f:
