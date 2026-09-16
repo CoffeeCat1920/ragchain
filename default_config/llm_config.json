@@ -1,0 +1,9 @@
+{
+  "text_llm_config": {
+    "text_llm_list": {
+      "HUGGINGFACE": "HuggingFaceH4/zephyr-7b-beta",
+      "OLLAMA": "qwen2.5:1.5b"
+    }
+  },
+  "current_text_llm": "OLLAMA"
+}
