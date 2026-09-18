@@ -1,15 +1,13 @@
 from pydantic import BaseModel
-
 from .llm_model.llm_registry import LLMModelRegistry 
-
-class Format(BaseModel):
-    answers: list[str] 
+from .query_translator.query_translator import QueryTranslation
 
 def main() -> None:
-    llm_registry = LLMModelRegistry() 
-    text_llm = llm_registry.current_text_model()
-    answers=Format.model_validate(text_llm.invoke_json("Generate 3 stepback queries for the following question: How to train cat not to pee everywhere all the time??", Format))
-    print(*answers.answers, sep="\n")
+    llm_registry=LLMModelRegistry() 
+    text_llm=llm_registry.current_text_model()
+    query_translator=QueryTranslation()
+    answers=query_translator.multi_query("How to conduct a scienctific experiment and extrapulate results?", 4)
+    print(*answers, sep="\n")
 
 if __name__ == "__main__":
     main()
