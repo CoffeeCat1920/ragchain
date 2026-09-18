@@ -1,5 +1,9 @@
 from .llm_base import LLMBase 
 from langchain_ollama import ChatOllama
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import JsonOutputParser
+
+from pydantic import BaseModel
 
 class LLMBaseOllama(LLMBase):
     def __init__(self, model_name : str) -> None:
@@ -16,5 +20,15 @@ class LLMBaseOllama(LLMBase):
             return response.content
 
 
-    def invoke_json(self, query, str):
-        pass
+    def invoke_json(self, query: str, format: type[BaseModel]):
+        prompt = ChatPromptTemplate.from_template("""
+                                                  {query}
+                                                  {format_instruction}""")
+        parser = JsonOutputParser(pydantic_object=format)
+
+        chain = prompt | self.llm | parser 
+
+        result = chain.invoke({"query": query, 
+                               "format_instruction": parser.get_format_instructions()})
+
+        return result

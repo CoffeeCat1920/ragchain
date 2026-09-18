@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from pydantic import BaseModel
 
 class LLMBase(ABC):
     def __init__(self, model_name : str):
@@ -9,5 +10,5 @@ class LLMBase(ABC):
         pass
 
     @abstractmethod
-    def invoke_json(self, query, str):
+    def invoke_json(self, query: str, format : type[BaseModel]):
         pass
