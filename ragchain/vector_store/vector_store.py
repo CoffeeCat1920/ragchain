@@ -31,5 +31,9 @@ class VectorStore():
         for query in queries:
             new_result = self._text_injustor._vectorstore.similarity_search(query, k)
             results.extend(new_result)
+        results = self._remove_duplicates(results)
         return results 
-
+    
+    def _remove_duplicates(self, documents: list[Document]) -> list[Document]:
+        unique_documents = list({doc.page_content: doc for doc in documents}.values())
+        return unique_documents

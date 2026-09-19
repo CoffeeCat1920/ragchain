@@ -12,3 +12,7 @@ class LLMBase(ABC):
     @abstractmethod
     def invoke_json(self, query: str, format: type[BaseModel]):
         pass
+
+    @abstractmethod
+    def invoke_context_query(self, query: str, context: list[str]):
+        pass

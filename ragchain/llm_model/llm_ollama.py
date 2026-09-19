@@ -19,6 +19,20 @@ class LLMBaseOllama(LLMBase):
         if isinstance(response.content, str):
             return response.content
 
+    def invoke_context_query(self, query: str, context: list[str]):
+        prompt = ChatPromptTemplate.from_template("""
+                                                 Answer the following query according to given context: 
+                                                 {query}
+
+                                                 Context:
+                                                 {context}
+                                                 """) 
+        chain = prompt | self.llm
+
+        result = chain.invoke({"query": query,
+                               "context": context})
+
+        return result.content
 
     def invoke_json(self, query: str, format: type[BaseModel]):
         prompt = ChatPromptTemplate.from_template("""
