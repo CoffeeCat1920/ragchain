@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any
 from pydantic import BaseModel
 
 class LLMBase(ABC):
@@ -14,5 +15,5 @@ class LLMBase(ABC):
         pass
 
     @abstractmethod
-    def invoke_context_query(self, query: str, context: list[str]):
+    def invoke_context_query(self, query: str, context: list[str]) -> str | list[str | dict[Any, Any]]:
         pass

@@ -1,3 +1,5 @@
+from typing import Any
+
 from .llm_base import LLMBase 
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
@@ -19,7 +21,8 @@ class LLMBaseOllama(LLMBase):
         if isinstance(response.content, str):
             return response.content
 
-    def invoke_context_query(self, query: str, context: list[str]):
+    def invoke_context_query(self, query: str, 
+                             context: list[str]) -> str | list[str | dict[Any, Any]]:
         prompt = ChatPromptTemplate.from_template("""
                                                  Answer the following query according to given context: 
                                                  {query}
