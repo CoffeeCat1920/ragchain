@@ -1,7 +1,7 @@
+from .text_clean import clean_text
 from langchain_core.embeddings import Embeddings
 from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from ragchain.vector_store.text_clean import clean_text
 
 class Injustor():
     def __init__(self, path : str, embModel : Embeddings):

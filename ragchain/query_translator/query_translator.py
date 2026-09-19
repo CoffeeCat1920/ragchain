@@ -24,6 +24,5 @@ class QueryTranslation():
         Original question:
         {query}
         """ 
-        print(full_query)
         queries = Queries.model_validate(self.llm.invoke_json(full_query, Queries))
         return queries.queries

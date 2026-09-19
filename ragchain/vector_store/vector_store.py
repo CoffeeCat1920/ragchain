@@ -22,7 +22,14 @@ class VectorStore():
         if dataType == FileType.TEXT:
             self._text_injustor.injust(path)
 
-
     def retrieve(self, query : str, k : int) -> list[Document]: 
         results = self._text_injustor._vectorstore.similarity_search(query=query, k=k)
         return results
+
+    def multiquery_retrieve(self, queries : list[str], k : int) -> list[Document]:
+        results : list[Document] = [] 
+        for query in queries:
+            new_result = self._text_injustor._vectorstore.similarity_search(query, k)
+            results.extend(new_result)
+        return results 
+
