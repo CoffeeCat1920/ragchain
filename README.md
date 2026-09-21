@@ -9,16 +9,13 @@ RAGChain provides a clean architecture for building RAG pipelines with swappable
 ## Architecture
 
 ```
-┌─────────────┐    ┌──────────────────┐    ┌─────────────┐
-│  Ingestion  │───▶│  Embedding Layer  │───▶│ Vector Store │
-│  Pipeline   │    │  (Config-Driven)  │    │  (ChromaDB)  │
-└─────────────┘    └──────────────────┘    └─────────────┘
-                          │                        │
-                          ▼                        ▼
-                   ┌──────────────┐         ┌──────────────┐
-                   │   Registry   │         │   Retriever  │
-                   │   & Router   │         │   (Search)   │
-                   └──────────────┘         └──────────────┘
+Ingestion ───▶  Embedding Layer   Vector Store 
+Pipeline        (Config-Driven)    (ChromaDB)  
+                     │                 │
+                     ▼                 ▼
+                   Registry      Retriever  
+                   & Router      (Search)   
+                            
 ```
 
 ## Features
@@ -34,7 +31,7 @@ RAGChain provides a clean architecture for building RAG pipelines with swappable
 ### Installation
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/CoffeeCat1920/ragchain.git
 cd LangChain
 python -m venv .venv
 source .venv/bin/activate
@@ -79,14 +76,6 @@ for doc in results:
 ```bash
 python -m ragchain
 ```
-
-
-## Roadmap
-
-- [ ] PDF embedding and retrieval
-- [ ] Query translation (multi-query, HyDE)
-- [ ] LLM integration for answer generation
-- [ ] Image embedding support
 
 ## Tech Stack
 - **LangChain** — Core framework
